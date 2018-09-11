@@ -1,0 +1,56 @@
+*{margin: 0; padding: 0;}
+.message{max-width: 960px; margin: 0 auto;padding: 0; }
+.message header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.message header .xi{}
+.message header span{float: left; margin-top: 3.8px;}
+.message header div{float: left; width: 31.3%; text-align: center;font-size: 2rem;}
+.message header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.message header .glyphicon-menu-left{margin-bottom: 2px;}
+.message header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.message .notice{background-color: #F5F5F5; border-radius: 10px; margin: 20px 15px; padding: 10px 15px;}
+.message a{color: #000; text-decoration: none;}
+.message .notice .co p{text-align: center;}
+.message .notice .co .date{margin-top: 10px;}
+.message .notice .lis{word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 3; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/}
+.message .inform{background-color: #F5F5F5; border-radius: 10px; margin: 20px 15px; padding: 10px 15px;}
+.message .inform .lit{word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 3; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/}
+.message .inform .cos p{text-align: center;}
+.message .inform .cos .times{margin-top: 10px;}
+
+.messagedetail{max-width: 960px; margin: 0 auto;padding: 0;}
+.messagedetail header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.messagedetail header .xi{}
+.messagedetail header span{float: left; margin-top: 3.8px;}
+.messagedetail header div{float: left; width: 31.3%; text-align: center;font-size: 2rem;}
+.messagedetail header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.messagedetail header .glyphicon-menu-left{margin-bottom: 2px;}
+.messagedetail header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.messagedetail .inli{margin: 10px 15px;}
+.messagedetail .inli p{text-align: center;}
+.messagedetail .inli .topNotic{margin: 20px 0;}
+.messagedetail .inli .topNotic .shi{float: right;}
+.messagedetail .inli .content{text-indent: 2em;}
+
+.messagedeta{max-width: 960px; margin: 0 auto;padding: 0;}
+.messagedeta header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.messagedeta header .xi{}
+.messagedeta header span{float: left; margin-top: 3.8px;}
+.messagedeta header div{float: left; width: 31.3%; text-align: center;font-size: 2rem;}
+.messagedeta header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.messagedeta header .glyphicon-menu-left{margin-bottom: 2px;}
+.messagedeta header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.messagedeta .inli{margin: 10px 15px;}
+.messagedeta .inli p{text-align: center;}
+.messagedeta .inli .topNotic{margin: 20px 0;}
+.messagedeta .inli .topNotic .shi{float: right;}
+.messagedeta .inli .content{text-indent: 2em;}

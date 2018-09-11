@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/all.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/styles.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/style.js" ></script>
+     <!--    <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script> 
+ <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+ <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid index">
+	<header>
+		<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div>我要录单</div>
+		<div class="jilu"></div>
+	</header>
+	<div class="bananer">
+		<img src="{:ADDON_PUBLIC_PATH}/img/my.png">
+	</div>
+	<div class="cont">
+		<form class="form-horizontal" id="subForm">
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">打款日期：</label>
+		    <div class="col-sm-10">
+		      <input type="date" class="form-control"  placeholder="" id="datas">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">打款金额：</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control"  placeholder="" id="money">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">备注：</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" rows="3" id="tar"></textarea>
+		    </div>
+		  </div>
+			<div class="btns">
+				<input type="button" name="" value="提交审核" onclick="tijiao();" class="ti" style="margin-left: -16px;">
+			</div>
+			<div class="tt">
+				<!--<span id="hui1" ><a onclick="aa()"> 个人说明 </a></span>-->
+				<span id="hui2" ><a onclick="openform('salesback')"> 打款记录 </a></span>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+function aa(){
+	pop({
+		width:500,//提示窗口的宽度
+		height:200,//提示窗口的高度
+		title:'这是标题!',//提示窗口的标题
+		content:'这是提示信息'//提示窗口的内容
+	});
+}
+</script>
+<script>
+
+	window.onload=function yan(){
+		var valid=check_valid_user();
+		if(valid==1){
+			//window.location.href='salesbackedit.html';
+		}
+		else{
+				BootstrapDialog.show({
+	            title: "系统提示",
+	            message: "您还没有注册！",
+	            onhidden: function(dialogRef){
+	               window.location.href='index.php?s=/w16/Newdun/Newdun/zhuce';
+	            }
+        	});
+		}
+	}
+</script>
+ 
+<script>
+$(function(){
+	var now = new Date();
+	var year = now.getFullYear(); //得到年份
+	var month = now.getMonth();//得到月份
+	var date = now.getDate();//得到日期
+	month = month + 1;
+	if (month < 10) month = "0" + month;
+	if (date < 10) date = "0" + date;
+	var time = "";
+	time = year + "-" + month + "-" + date;
+	//当前日期赋值给当前日期输入框中（jQuery easyUI）
+	$('#datas').val(time);
+})
+</script>
+    
+<script>
+ 
+	function tijiao(){
+		var sdate = document.getElementById("datas").value; 
+		// $("datas").val();alert("ok");
+//		alert('aa');
+		var money = document.getElementById("money").value;
+		var con = document.getElementById("tar").value;
+		if(sdate==""){
+			var dlg=BootstrapDialog.show({  
+            title: '系统提示',  
+            message: '日期不能为空'  
+        });
+        setTimeout(function(){
+			    dlg.close();
+		},3000);
+			return false;
+		}
+		else if(money=="")
+		{
+			var dlg=BootstrapDialog.show({  
+            title: '系统提示',  
+            message: '金额不能为空'  
+        });
+          setTimeout(function(){
+			    dlg.close();
+		},3000);
+			return false;
+		}
+		else
+		{
+			document.getElementById('subForm').reset();
+                        $(function(){
+				var now = new Date();
+				var year = now.getFullYear(); //得到年份
+				var month = now.getMonth();//得到月份
+				var date = now.getDate();//得到日期
+				month = month + 1;
+				if (month < 10) month = "0" + month;
+				if (date < 10) date = "0" + date;
+				var time = "";
+				time = year + "-" + month + "-" + date;
+				//当前日期赋值给当前日期输入框中（jQuery easyUI）
+				$('#datas').val(time);
+			});
+			var strjson = '{"id":"", "remittance_date":"' + sdate + '","amount":"' + money + '","remark":"' + con + '","status":"未审核"}';
+			var rst = save_data("salesbackedit",strjson,0);
+                        var reust=JSON.parse(rst);
+			var resulttext=reust[0].result;
+			var dlg=BootstrapDialog.show({  
+	            title: '系统提示',
+	            message: "录单成功"
+      		 });
+      		setTimeout(function(){
+			    dlg.close();
+			},3000);
+		}
+	}
+</script>
+</body>
+</html>

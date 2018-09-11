@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/message.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+</head>
+<body>
+	<div class="container-fluid messagedeta">
+		<header>
+			<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+			<div class="xi">消息内容</div>
+		</header>
+		<div class="ping">
+			
+		</div>
+	</div>
+</body>
+<script>
+	function getParam(){
+		C1=window.location.href.split("?")[1]; 
+                C2=C1.split("&")[1]; 
+		C3=C2.split("=")[1]; 
+                
+		return C3;
+	};
+	var cc=getParam();
+	//console.log(cc);
+	var strjson=query_data("sendmessage","","");
+	//alert(strjson);
+	var obj = jQuery.parseJSON(strjson);
+	obj.map(function(val,index){
+		if(val.id==cc){
+			$('.ping').append(`
+					<div class="inli">
+						<p>${val.title}</p>
+						<div class="topNotic"><span>${val.type}</span><span class="shi">${val.send_time}</span></div>
+						<div class="content">${val.message}</div>
+					</div>
+			`)
+		}
+	})
+</script>
+</html>

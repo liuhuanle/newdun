@@ -1,0 +1,10 @@
+$(function(){
+	$('#messP').click(function(){
+		$('#one').show(300);
+		$('#two').hide(300);
+	});
+	$('#messPer').click(function(){
+		$('#two').show(300);
+		$('#one').hide(300);
+	});
+})

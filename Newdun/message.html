@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/message.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+</head>
+<body>
+	<div class="container-fluid message">
+		<header>
+			<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+			<div class="xi">消息中心</div>
+		</header>
+			<div class="notices">
+				
+			</div>
+		
+			<div class="informs">
+				
+			</div>
+	</div>
+</body>
+<script>
+	var strjson=query_data("sendmessage","","");
+	//alert(strjson);
+	var obj = jQuery.parseJSON(strjson);
+	obj.map(function(val,index){
+		if(val.type=="平台公告"){
+			$('.notices').append(`
+				<a href="index.php?s=/w16/Newdun/Newdun/messagedetail&id=${val.id}">
+					<div class="notice">
+						<p>${val.type}</p>
+						<div class="co">
+							<p>${val.title}</p>
+							<div class="lis">${val.summary}</div>
+							<div class="date">${val.send_time}</div>
+						</div>
+					</div>
+				</a>
+			`)
+		}
+		else if(val.type=="个人通知")
+		{
+			$('.informs').append(`
+				<a href="index.php?s=/w16/Newdun/Newdun/messagedeta&id=${val.id}">
+					<div class="inform">
+						<p>${val.type}</p>
+						<div class="cos">
+							<p>${val.title}</p>
+							<div class="lit">${val.summary}</div>
+							<div class="times">${val.send_time}</div>
+						</div>
+					</div>
+				</a>
+			`)
+		}
+})
+
+</script>
+</html>

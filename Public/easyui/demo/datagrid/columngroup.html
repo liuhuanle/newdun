@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Column Group - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Column Group</h2>
+	<p>The header cells can be merged. Useful to group columns under a category.</p>
+	<div style="margin:20px 0;"></div>
+	<table class="easyui-datagrid" title="Column Group" style="width:1200px;height:250px"
+			data-options="rownumbers:true,singleSelect:true,url:'datagrid_data1.json',method:'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:80" rowspan="3">Item ID</th>
+				<th colspan="2">Item master</th>
+				<th data-options="field:'productid',width:100" rowspan="3">Product</th>
+				
+				<th colspan="4">Item Details</th>
+				<th colspan="4">Item Other</th>
+			</tr>
+			<tr>
+				<th data-options="field:'listprice2',width:80,align:'right'"  rowspan="2">List Price2</th>
+				<th data-options="field:'unitcost2',width:80,align:'right'"  rowspan="2">Unit Cost2</th> 
+			 
+				<th data-options="field:'listprice',width:80,align:'right'"  rowspan="2">List Price</th>
+				<th data-options="field:'unitcost',width:80,align:'right'"  rowspan="2">Unit Cost</th>
+				<th data-options="field:'attr1',width:240"  rowspan="2">Attribute</th>
+				<th data-options="field:'status',width:60,align:'center'"  rowspan="2">Status</th>
+				
+				
+				<th colspan="2">Item Other ii</th>
+				<th colspan="2">Item Other iii</th>
+			</tr>
+			
+			<tr>
+				<th data-options="field:'listprice3',width:80,align:'right'">List Price3</th>
+				<th data-options="field:'unitcost3',width:80,align:'right'">Unit Cost3</th>
+				
+				<th data-options="field:'listprice3',width:80,align:'right'">List Price4</th>
+				<th data-options="field:'unitcost3',width:80,align:'right'">Unit Cost4</th>
+			</tr>
+		</thead>
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/new.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/messagetab.js"></script> 
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid addmessage">
+	<header>
+		<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div class="log">新增消息</div>
+		<div class="jilu"></div>
+	</header>
+	<div class="addcon">
+		<div class="addtit">
+			<div class="radioLeft">
+			  <label id="messP">
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			   平台公告
+			  </label>
+			</div>
+			<div class="radioRight">
+			  <label id="messPer">
+			    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+			    个人通知
+			  </label>
+			</div>
+		</div>
+		<div class="form-horizontal" id="one">
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">标题</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="tits" placeholder="标题">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">内容</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" rows="6" id="tare"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">摘要</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" rows="2" id="zhai"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">发送对象</label>
+		    <div class="col-sm-10">
+		      <select class="form-control">
+				  <option>全部用户</option>
+			  </select>
+		    </div>
+		  </div>
+		</div>	
+		<div class="form-horizontal" id="two">
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">标题</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="tits2" placeholder="标题">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">内容</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" rows="6" placeholder="内容" id="tare2"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">摘要</label>
+		    <div class="col-sm-10">
+		      <textarea class="form-control" rows="2" id="zhai2"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="tits" class="col-sm-2 control-label">发送对象</label>
+		    <div class="col-sm-10">
+		      <select class="form-control">
+				  <option>全部用户</option>
+			  </select>
+		    </div>
+		  </div>
+		</div>
+		<div class="btt">
+			<button class="look">预览</button>
+			<button class="send" onclick="fa()">发送</button>
+		</div>
+	</div>
+</div>
+<script>
+Date.prototype.format = function(fmt){ 
+    var o = { 
+        "M+" : this.getMonth()+1,                 //月份 
+        "d+" : this.getDate(),                    //日 
+        "h+" : this.getHours(),                   //小时 
+        "m+" : this.getMinutes(),                 //分 
+        "s+" : this.getSeconds(),                 //秒 
+        "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+        "S"  : this.getMilliseconds()             //毫秒 
+   	}; 
+    if(/(y+)/.test(fmt)) {
+        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+    }
+    for(var k in o) {
+        if(new RegExp("("+ k +")").test(fmt)){
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        }
+    }
+	return fmt; 
+}
+ function fa()
+ {
+ 	if(document.getElementById("optionsRadios1").checked)
+ 	{
+ 		var tit=$('#tits').val();
+	 	var tare=$('#tare').val();
+	 	var zhai=$('#zhai').val();
+ 		if(tit==""||tare==""||zhai=="")
+ 		{
+ 			BootstrapDialog.show({  
+		      title: '系统提示',  
+		      message: "请全部填写"
+			});
+ 		}
+ 		else{
+	 		//alert('平台公告');
+	 		//读取各个用户
+			var strjson=query_data("filluserinfoview", '1=1',"");
+			console.log(strjson);
+			var strjson = '{ "rows" : ' + strjson+ '}';
+			var obj = jQuery.parseJSON(strjson);
+//			console.log(obj);
+			for(var i=0;i<obj.rows.length;i++){
+				var openid = eval("obj.rows["+ i +"].openid");	 	
+			 	var tit=$('#tits').val();
+			 	var tare=$('#tare').val();
+			 	var zhai=$('#zhai').val();
+	//		 	var sdate=(new Date()).toLocaleDateString();
+	//			var dates=sdate.replace(/\//g,'-');
+				
+				var sdate = new Date().format("yyyy-MM-dd hh:mm:ss");
+	
+			 	var strjson = '{"id":"", "openid":"'+openid+'","message":"' + tare + '","summary":"' + zhai + '","title":"'+tit+'","type":"平台公告","send_time":"'+sdate+'"}';
+			 	//console.log(strjson);
+				var rst = save_data("sendmessage",strjson,0);
+			}
+			var reust=JSON.parse(rst);
+			var resulttext=reust[0].result;
+			BootstrapDialog.show({  
+		      title: '系统提示',  
+		      message: resulttext
+			});		
+ 		}
+ 	}
+ 	else if(document.getElementById("optionsRadios2").checked)
+ 	{
+ 		var tit2=$('#tits2').val();
+	 	var tare2=$('#tare2').val();
+	 	var zhai2=$('#zhai2').val();
+ 		if(tit2==""||tare2==""||zhai2=="")
+ 		{
+ 			BootstrapDialog.show({  
+		      title: '系统提示',  
+		      message: "请全部填写"
+			});
+ 		}
+ 		else{
+	 		//alert('个人通知');
+	 		//读取各个用户
+			var strjson=query_data("filluserinfoview", '1=1',"");
+			//alert(strjson);
+			var strjson = '{ "rows" : ' + strjson+ '}';
+			var obj = jQuery.parseJSON(strjson);
+			//alert(obj);
+			for(var i=0;i<obj.rows.length;i++){
+				var openid = eval("obj.rows["+ i +"].openid");	 	
+			 	var tit2=$('#tits2').val();
+			 	var tare2=$('#tare2').val();
+			 	var zhai2=$('#zhai2').val();
+	//		 	var sdate=(new Date()).toLocaleDateString();
+	//			var dates=sdate.replace(/\//g,'-');
+				var sdate = new Date().format("yyyy-MM-dd hh:mm:ss");
+			 	var strjson = '{"id":"", "openid":"'+openid+'","message":"' +tare2+ '","summary":"' + zhai2 + '","title":"'+tit2+'","type":"个人通知","send_time":"'+sdate+'"}';
+			 	//alert(strjson);
+			 	var rst = save_data("sendmessage",strjson,0);
+			}
+			var reust=JSON.parse(rst);
+			var resulttext=reust[0].result;
+			BootstrapDialog.show({  
+		      title: '系统显示',  
+		      message: resulttext
+			});
+	 	}
+ 	}
+ }
+</script>
+</body>
+</html>

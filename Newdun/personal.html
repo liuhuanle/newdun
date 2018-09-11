@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>晚九点</title>
+		<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+                <link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/all.css" />
+                <link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/area.css" />
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+                     <!--    <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script> 
+                 <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+                 <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+		
+		<style type="text/css">.inline {
+	display: inline-block;
+	float: right;
+	border: none;
+	text-align: right;
+	padding: 5px;
+}
+		.lai{
+			display: block;
+		}
+		.shi{
+			display: none;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-fluid personal">
+			<header>
+				<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+				<div class="topZ">个人信息</div>
+				<div class="jilu"></div>
+			</header>
+			<div class="mid" id="subForm">
+				
+			</div>
+			<div id="" style="text-align: center;">
+				<button type="button" class="btn btn-primary" style="width: 300px;height: 40px;background: #44C0FF;border: none;" onclick="baocun()">保存</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+
+function ya(){
+//	var strjson = '{"id":"", "nickname":"' + name + '","mobile":"' + phone + '","city":"' + address + '}';
+	var rst = query_data("filluserinfo","");
+	var rst=JSON.parse(rst);
+	$('.mid').append(`
+		<div><span class="lefts">头像</span><span class="right"><img src="${rst[0].headimgurl}"></span></div>
+				<div><span class="left">昵称</span><input type="text" class="inline name" value="${rst[0].nickname}"></div>
+				<div><span class="left">手机号</span><input style="color: gainsboro;" readonly="readonly" type="text" class="inline phone" value="${rst[0].mobile}"></div>
+				<div onclick="lai();">
+					<span class="left">地点</span>
+					<span class="right qq">${rst[0].city}</span>
+					<li class="lis shi">
+						<!--选择地区-->
+						<section class="express-area" style="float: right;border: none;margin-top: -8px;font-size: 28px;">
+							<a id="expressArea" href="javascript:void(0)" style="border: none;">
+								<dl>
+									<dt class="xiaoshi">请选择</dt>
+									<dd class="address">省 - 市</dd>
+								</dl>
+							</a>
+						</section>
+						<!--选择地区弹层-->
+						<section id="areaLayer" class="express-area-box">
+							<article id="areaBox">
+								<div class="top">
+									<h3>选择城市</h3>
+								</div>
+								<ul id="areaList" class="area-list" style="margin-bottom: 500px;"></ul>
+							</article>
+						</section>
+						<!--遮罩层-->
+						<div id="areaMask" class="mask"></div>
+					</li>
+				</div>
+		`)
+	}
+	ya()
+
+function lai(){
+	$(".lis").removeClass("shi")
+	$(".qq").addClass("shi")
+}
+
+function baocun() {
+	var name = $('.name').val();
+	var phone = $('.phone').val();
+	var address = $('.address').text();
+	var myreg = /^[1][3,4,5,7,8][0-9]{9}$/
+	if(name == "") {
+		BootstrapDialog.show({
+			title: '系统提示',
+			message: '姓名不能为空'
+		});
+		return false;
+	} else if(address === "省 - 市") {
+		BootstrapDialog.show({
+			title: '系统提示',
+			message: '地址不能为空'
+		})
+		return false;
+	} else {
+		var strjson = '{"id":"", "nickname":"' + name + '","city":"' + address + '"}';
+		var rst = save_data("filluserinfo", strjson, 1)
+		BootstrapDialog.show({
+			title: '系统提示',
+			message: '信息提交成功'
+		})
+	}
+}
+</script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/jquery.area.js"></script>
+</html>

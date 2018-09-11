@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Footer Rows in DataGrid - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Footer Rows in DataGrid</h2>
+	<p>The summary informations can be displayed in footer rows.</p>
+	<button onclick="accept();">test</button>
+	<div style="margin:20px 0;"></div>
+	<table id="dg" class="easyui-datagrid" title="Footer Rows in DataGrid" style="width:700px;height:220px"
+			data-options="
+				url: 'datagrid_data2.json',
+				method: 'get',
+				fitColumns: true,
+				singleSelect: true,
+				rownumbers: true,
+				showFooter: true,
+				onClickCell: onClickCell, 
+				onEndEdit: onEndEdit 
+			">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:80,editor:'text'">Item ID</th>
+				<th data-options="field:'productid',width:120,editor:'text'">Product ID</th>
+				<th data-options="field:'listprice',width:80,align:'right',editor:'text'">List Price</th>
+				<th data-options="field:'unitcost',width:80,align:'right',editor:'text'">Unit Cost</th>
+				<th data-options="field:'attr1',width:250,editor:'text'">Attribute</th>
+				<th data-options="field:'status',width:60,align:'center',editor:'text'">Status</th>
+			</tr>
+		</thead>
+	</table>
+
+
+	<script type="text/javascript">
+		var editIndex = undefined;
+		function endEditing(){
+			if (editIndex == undefined){return true}
+			if ($('#dg').datagrid('validateRow', editIndex)){
+				$('#dg').datagrid('endEdit', editIndex);
+				editIndex = undefined;
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function onClickCell(index, field){ 
+			if (editIndex != index){
+				if (endEditing())
+				{   
+					$('#dg').datagrid('selectRow', index)
+							.datagrid('beginEdit', index);
+					var ed = $('#dg').datagrid('getEditor', {index:index,field:field});
+					if (ed){
+						($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+					}
+					editIndex = index;
+				} else { 
+					setTimeout(function(){
+						$('#dg').datagrid('selectRow', editIndex);
+					},0);
+				}
+			} 
+			else
+			{
+				
+			}
+			
+		}
+		function onEndEdit(index, row){
+			var ed = $(this).datagrid('getEditor', {
+				index: index,
+				field: 'productid'
+			});
+			row.productname = $(ed.target).combobox('getText');
+		}
+		function append(){ 
+			if (endEditing()){
+				$('#dg').datagrid('appendRow',{status:'P'});
+				editIndex = $('#dg').datagrid('getRows').length-1;
+				$('#dg').datagrid('selectRow', editIndex)
+						.datagrid('beginEdit', editIndex);
+			}
+		}
+		function removeit(){
+			if (editIndex == undefined){return}
+			$('#dg').datagrid('cancelEdit', editIndex)
+					.datagrid('deleteRow', editIndex);
+			editIndex = undefined;
+		}
+		function accept(){append(); alert('saved');
+			if (endEditing()){
+				$('#dg').datagrid('acceptChanges');
+			}
+		}
+		function reject(){
+			$('#dg').datagrid('rejectChanges');
+			editIndex = undefined;
+		}
+		function getChanges(){
+			var rows = $('#dg').datagrid('getChanges');
+			alert(rows.length+' rows are changed!');
+		}
+	</script>
+</body>
+</html>

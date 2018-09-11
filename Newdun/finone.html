@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/fin.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+     <!--    <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+ 
+ <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+ <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid finone">
+	<header>
+		<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div class="xi">资料</div>
+	</header>
+	<div class="per">
+		
+	</div>
+</div>
+<script>
+	function getParam(){
+		C1=window.location.href.split("?")[1]; //得到id=楼主
+	            C2=C1.split("&")[1]; //得到楼主
+		C3=C2.split("=")[1]; //得到楼主
+	            
+		return C3;
+	};
+	var cc=getParam();
+	//读取各个用户
+	var strjson=query_data("filluserinfoview", '1=1',"");
+	//alert(strjson);
+	var strjson = '{ "rows" : ' + strjson+ '}';
+	var obj = jQuery.parseJSON(strjson);
+	//alert(obj);
+	for(var i=0;i<obj.rows.length;i++){
+		if(obj.rows[i].uid==cc)
+		{
+			var nickname = eval("obj.rows["+ i +"].nickname");
+			var mobile = eval("obj.rows["+ i +"].mobile");
+			var city = eval("obj.rows["+ i +"].city");
+			var reg_time = eval("obj.rows["+ i +"].reg_time");
+			var openid = eval("obj.rows["+ i +"].openid");
+			var id = eval("obj.rows["+ i +"].id");
+			var pointvalue = eval("obj.rows["+ i +"].pointvalue");
+			var total_amount = eval("obj.rows["+ i +"].total_amount");
+			var unixTimestamp = new Date( reg_time*1000 ) ;
+			commonTime = unixTimestamp.toLocaleString();
+	
+			$('.per').append(`
+				<p>姓名：${nickname}</p>
+				<p>手机号码：${mobile}</p>
+				<p>注册日期：${commonTime}</p>
+				<p>地区：${city}</p>
+				<p>上月击败：75%</p>
+				<p>本周排名：第1名</p>
+				<p>可兑换new盾：${pointvalue}</p>
+				<p>已兑换金额：元</p>
+				<p>已通过审核的打款：${total_amount}元</p>
+			`);
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>晚九点</title>
+		<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+                <link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/all.css" />
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+                     <!--    <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+                <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script> 
+                 <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+                 <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+		<style type="text/css">
+			.yan{
+				white-space: nowrap;
+			}
+			.yanq{
+				background: #44C0FF;
+				color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-fluid zhuce">
+			<header>
+				<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+				<div class="topZ">注册</div>
+				<div class="jilu"></div>
+			</header>
+			<form id="subForm">
+				<div class="cont">
+					<div class=""><input type="text" class="form-control name" placeholder="姓名"></div>
+					<div class=""><input type="tel" class="form-control phone" placeholder="手机号码"></div>
+					<div class="yan">
+						<input type="text" class="form-control yanz" placeholder="验证码" style="width: 48%;">
+						<input id="btnSendCode" value="获取动态验证码" type="button" class="yanq" style="width: 48%;float: right;">
+					</div>
+					<div class=""><input type="password" class="form-control password" placeholder="密码"></div>
+					<div class=""><input type="password" class="form-control repassword" placeholder="确认密码"></div>
+					<div class="yaqingma"><!--<input type="text" class="form-control" placeholder="邀请码(选填)">--></div>
+				</div>
+				<div class="bot">
+					<div class="btns"><input type="button" style="background: #44C0FF;" value="立即注册" onclick="zhuce();"></div>
+					<div class="zhuce">
+						<!--<a href="login.html">注册过?现在登录></a>-->
+					</div>
+				</div>
+			</form>
+		</div>
+<script>
+	window.onload=function yan(){
+		var valid=check_valid_user();
+		if(valid==1){
+//			window.location.href='index.php?s=/w16/Newdun/Newdun/personcenter';
+			BootstrapDialog.show({
+	            title: "系统提示",
+	            message: "您已经注册！",
+	            onhidden: function(dialogRef){
+	               window.location.href='index.php?s=/w16/Newdun/Newdun/personcenter';
+	            }
+        	})
+		}
+		else{
+//				BootstrapDialog.show({
+//	            title: "系统提示",
+//	            message: "您还没有注册！",
+//	            onhidden: function(dialogRef){
+//	               window.location.href='index.php?s=/w16/Newdun/Newdun/zhuce';
+//	            }
+//      	})
+		}
+	}
+</script>
+		<script type="text/javascript">
+			var url = location.search;
+//			alert(url)
+			var urls = url.split("-")
+//			alert(urls[1])
+			if(urls[1]==''){
+				$('.yaqingma').append(`<input type="text" class="form-control yqmi" placeholder="邀请码(必填)">`)
+			}else{
+				if(urls[1]==undefined){
+					$('.yaqingma').append(`<input type="text" class="form-control yqmi" placeholder="邀请码(必填)">`)
+				}else{
+					$('.yaqingma').append(`<input type="text" class="form-control yqmi" value="${urls[1]}">`)
+				}	
+			}
+			//获取信息end
+			var InterValObj; //timer变量，控制时间
+			var count = 60; //间隔函数，1秒执行
+			var curCount; //当前剩余秒数
+			var code = ""; //验证码
+			var codeLength = 6; //验证码长度
+			function sendMessage() {	
+				var name = $('.name').val();
+				var phone = $('.phone').val();
+				var password = $('.password').val();
+				var repassword = $('.repassword').val();
+				var yan = $('.yanz').val();	
+				var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+				if(phone == "" || !myreg.test(phone)) {
+					BootstrapDialog.show({
+						title: '系统提示',
+						message: '填写正确的手机号码'
+					});
+					return false;
+				} else {
+					var rst = check_valid_user()
+//					console.log(rst)
+					if(rst == 1){
+						BootstrapDialog.show({
+							title: '系统提示',
+							message: '此手机号码已注册'
+						});
+					}else{
+						$("#btnSendCode").removeClass("yanq")
+						var str = verifyphonecode(phone)
+						curCount = count;
+						var dealType; //验证方式
+						var uid = $("#uid").val(); //用户uid
+						if($("#phone").attr("checked") == true) {
+							dealType = "phone";
+						} else {
+							dealType = "email";
+						}
+						//设置button效果，开始计时
+						$("#btnSendCode").attr("disabled", "true");
+						$("#btnSendCode").val(+curCount + "秒再获取");
+						InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+					}									
+				}
+				//timer处理函数
+				function SetRemainTime() {
+					if(curCount == 0) {
+						window.clearInterval(InterValObj); //停止计时器
+						$("#btnSendCode").removeAttr("disabled"); //启用按钮
+						$("#btnSendCode").val("重新获取验证码");
+						code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效   
+						$("#btnSendCode").addClass("yanq")
+					} else {
+						curCount--;
+						$("#btnSendCode").val(+curCount + "秒再获取");
+					}
+				}
+			}
+			$('#btnSendCode').on('click', function() {
+				sendMessage()
+			})
+			
+			//	提交邀请码信息star
+					function yaoqingmaa(){
+			//		提交邀请码信息star
+					var userid = get_user_id()
+					var invite_date = (new Date()).toLocaleDateString();
+					var yqmi = $('.yqmi').val();
+					if(urls[1]==undefined){
+						alert(3)
+					}else if(urls[1]==''){
+						var yqmi = $('.yqmi').val();
+					}else{
+						var yqmi = urls[1]
+					}
+					alert(yqmi);
+					if(yqmi==''){
+						BootstrapDialog.show({
+							title: '系统提示',
+							message: '邀请码不能为空'
+						});
+						return false;
+					}else if(yqmi==userid){
+						BootstrapDialog.show({
+							title: '系统提示',
+							message: '邀请码输入有误'
+						});
+						return false;
+					}else{
+						alert(urls[1])
+						var stryao1 = '{"id":"", "inviter_id":"' + yqmi + '","invite_date":"' + invite_date + '"}';
+//						var stryao1 = '{"id":"", "inviter_id":"' + yqmi + '"}';
+						alert(stryao1)
+						var stryaoqing = save_data("invitecode", stryao1, 0)
+						alert(stryaoqing)
+		//				提交邀请码信息end											
+					}					
+				}
+				
+//				提交邀请码信息end
+			
+			
+			function zhuce() {
+				yaoqingmaa()
+				var name = $('.name').val();
+				var phone = $('.phone').val();
+				var password = $('.password').val();
+				var repassword = $('.repassword').val();
+				var yan = $('.yanz').val();	
+				var yqmi = $('.yqmi').val();	
+				var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+				if(name == "") {
+					BootstrapDialog.show({
+						title: '系统提示',
+						message: '姓名不能为空'
+					});
+					return false;
+				} else if(phone == "" || !myreg.test(phone)) {
+					BootstrapDialog.show({
+						title: '系统提示',
+						message: '填写正确的手机格式'
+					});
+					return false;
+				} else if(yan == '') {
+					BootstrapDialog.show({
+						title: '系统提示',
+						message: '验证码不能为空'
+					})
+					return false;
+				} else if(password == '') {
+					BootstrapDialog.show({
+						title: '系统提示',
+						message: '密码不能为空'
+					})
+					return false;
+				}  else if(password != repassword) {
+					BootstrapDialog.show({
+						title: '系统提示',
+						message: '密码确认有误'
+					})
+					return false;
+				}
+				else {
+					var str = compareverifycode(phone,yan)	 
+					//console.log(str)
+					//var str = str.split(" ")
+					//console.log(str)
+					//if(str[2] == 0){
+                                        if(str == 0){
+						BootstrapDialog.show({
+						title: '系统提示',
+						message: '验证码输入有误'
+						})
+						return false;
+					//}else if(str[0] == 1){
+                                }else if(str[0] == 1){
+						document.getElementById('subForm').reset();
+						//提交邀请信息
+						
+						//提交个人信息
+						var strjson = '{"id":"", "nickname":"' + name + '","mobile":"' + phone + '","password":"' + password + '","'+ ustatus + '":""' + '}';
+						var rst = save_data("filluserinfo", strjson, 1); 
+//						console.log(rst)
+
+						var valid=check_valid_user()
+							if(valid==1){
+								BootstrapDialog.show({
+						            title: "系统提示",
+						            message: "注册成功",
+						            onhidden: function(dialogRef){
+						               window.location.href='index.php?s=/w16/Newdun/Newdun/salesbackedit';
+						            }
+					        	})
+							}
+					}else{
+						BootstrapDialog.show({
+						title: '系统提示',
+						message: '验证码验证有问题'
+						})
+						return false;
+					}
+					
+				}
+			}
+		</script>
+	</body>
+
+</html>

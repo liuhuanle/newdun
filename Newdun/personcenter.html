@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/all.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+     <!--    <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script> 
+ <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+ <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+<style type="text/css">
+	.log{
+		margin: 5px 0px;
+		width: 100%;
+		height: 64px;
+		position: relative;
+	}
+	.log11{
+		float:left;	
+		margin-left: 10px;	
+	}
+	.log img{
+		width: 65px;
+		height: 65px;
+	}
+	.log1{
+		margin-left: 110px;
+		height: 65px;
+		white-space: nowrap;
+		margin-top: -60px;
+	}
+	.log1 span{
+		font-size: 16px;
+		color: #000;
+	}
+	.log1 div span{
+		font-size: 14px;
+		color: #ADADAD;
+	}
+</style>
+</head>
+<body>
+<div class="container-fluid personcenter">
+	<header>
+		<div class="log"></div>
+	</header>
+	<nav>
+		<li class="li1"><a href="#" class="one">我的业绩</a></li>
+		<li class="li2"><a href="#" class="two">我的资产</a></li>
+		<li class="li3"><a href="#" class="three">排行榜</a></li>
+		<li class="li4"><a href="#" class="four">个人中心</a></li>
+	</nav>
+	<div class="box">
+		<div class="ones">
+			<!--<div>您的业绩总额为：</div>
+			<div class="money" style="height: 80px;margin: 0;padding: 0;margin-top: 10px;"></div>-->
+			<div class="moneyper">
+				<!--<p>直接打款业绩</p>
+				<p>3000元</p>-->
+			</div>
+			<a href="index.php?s=/w16/Newdun/Newdun/ally">
+			<div class="moneyally">
+				<!--<p>盟友贡献业绩</p>
+				<p style="font-size: 18px; color: #44C0FF;font-weight: bold;">0元</p>-->
+			</div>
+			</a>
+			<div class="cen"><a href="index.php?s=/w16/Newdun/Newdun/salesbackedit"><button type="button" name="" class="lu">我要录单</button></a><span class="da"><a href="index.php?s=/w16/Newdun/Newdun/salesback">打款记录</a></span></div>
+		</div>
+		<div class="twos">
+			<!--<div class="icons">
+				<div class="tops">当前New盾指数</div>
+				<div>10</div>
+			</div>
+			<p>当前New盾指数：<span>10</span></p>
+			<p>今日馈赠New盾数：<span>26.57</span>个</p>
+			<p>当前可兑换New盾指数：<span>99.96</span>个</p>
+			<p>本月回款排名：<span>第18名</span></p>
+			<div class="cen"><a href="cashexchangeedit.html"><button type="button" name="" class="lu">我要兑现</button></a><a href=""></div>-->
+		</div>
+		<div class="threes">
+			<div class="icons">
+				<div class="tops">
+					<!--本周排名<span>第1名</span>-->					
+				</div>
+				<div>上月击败了<span>65%</span>的伙伴</div>
+			</div>
+			<div class="bottom">
+				<div class="topName"><span class="name">排名</span><span class="time">昵称</span><span class="tel">手机尾数</span><span>业绩额</span></div>
+				<div class="botDate">
+					<!--<div><span>1</span><span>小豆子</span><span>10000</span></div>
+					<div><span>2</span><span>小豆子</span><span>9999</span></div>
+					<div><span>3</span><span>小豆子</span><span>8888</span></div>
+					<div><span>4</span><span>小豆子</span><span>7777</span></div>
+					<div><span>5</span><span>小豆子</span><span>6666</span></div>
+					<div><span>6</span><span>小豆子</span><span>123</span></div>-->
+				</div>
+			</div>
+			<div class="ton" style="text-align: right;margin-right: 10px;">
+				<a href="index.php?s=/w16/Newdun/Newdun/results" style="color: #44C0FF;padding-bottom: 20px;">历史业绩</a>
+			</div>
+		</div>
+		<div class="fours">
+			<div class="topImg">
+				<dl>
+					<dt><img src="{:ADDON_PUBLIC_PATH}/img/top.png"></dt>
+					<dd>时间的力量，聚沙成塔！</dd>
+				</dl>
+			</div>
+			<div class="bott">
+				<div><a href="index.php?s=/w16/Newdun/Newdun/personal"><span class="left"><img src="{:ADDON_PUBLIC_PATH}/img/xinxi.png"></span><span class="my">个人信息</span><span class="glyphicon glyphicon-menu-right"></span></a></div>
+				<div><a href="index.php?s=/w16/Newdun/Newdun/ally"><span class="left"><img src="{:ADDON_PUBLIC_PATH}/img/meng.png"></span><span class="my">我的盟友</span><span class="glyphicon glyphicon-menu-right"></span></a></div>
+				<div><a href="index.php?s=/w16/Newdun/Newdun/id_card"><span class="left"><img src="{:ADDON_PUBLIC_PATH}/img/shen.png"></span><span class="my">身份验证</span><span class="glyphicon glyphicon-menu-right"></span></a></div>
+				<div><a href="index.php?s=/w16/Newdun/Newdun/bank_card"><span class="left"><img src="{:ADDON_PUBLIC_PATH}/img/shen.png"></span><span class="my">我的银行卡</span><span class="glyphicon glyphicon-menu-right"></span></a></div>
+				<div><a href="index.php?s=/w16/Newdun/Newdun/message"><span class="left"><img src="{:ADDON_PUBLIC_PATH}/img/message.png"></span><span class="my">消息中心</span><span class="glyphicon glyphicon-menu-right"></span></a></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+
+	window.onload=function yan(){
+		var valid=check_valid_user();
+		if(valid==1){
+			//window.location.href='salesbackedit.html';
+		}
+		else{
+				BootstrapDialog.show({
+	            title: "系统提示",
+	            message: "您还没有注册！",
+	            onhidden: function(dialogRef){
+	               window.location.href='index.php?s=/w16/Newdun/Newdun/zhuce';
+	            }
+        	});
+		}
+	}
+</script>
+<script>
+//function getParam(){
+//		C1=window.location.href.split("?")[1]; //得到id=楼主
+//      C2=C1.split("&")[1]; //得到楼主
+//		C3=C2.split("=")[1]; //得到楼主               
+//		return C3;
+//	};
+//	var cc=getParam();
+//	console.log(cc)
+//	if(cc==001){
+//		$('.ones').show();
+//		$('.twos').hide(400);
+//		$('.threes').hide();
+//		$('.fours').hide();
+//	}
+$(function(){
+	$('.one').click(function(){
+//		$('.log').html('我的业绩');
+		$('nav li:first-child').addClass("li1");
+//		$('.one').addClass('onecolor');
+		$('.li2').removeClass("oneborder");
+		$('.li3').removeClass("oneborder");
+		$('.li4').removeClass("oneborder");
+		$('.ones').show(400);
+		$('.twos').hide();
+		$('.threes').hide();
+		$('.fours').hide();
+	});
+	$('.two').click(function(){
+//		$('.log').html('我的资产');
+		$('.li2').addClass("oneborder");
+		$('.li1').removeClass("li1");
+		$('.li3').removeClass("oneborder");
+		$('.li4').removeClass("oneborder");
+		$('.ones').hide();
+		$('.twos').show(400);
+		$('.threes').hide();
+		$('.fours').hide();
+	});
+	$('.three').click(function(){
+//		$('.log').html('排行榜');
+		$('.li3').addClass("oneborder");
+		$('.li1').removeClass("li1");
+		$('.li2').removeClass("oneborder");
+		$('.li4').removeClass("oneborder");
+		$('.ones').hide();
+		$('.twos').hide();
+		$('.threes').show(400);
+		$('.fours').hide();
+	});
+	$('.four').click(function(){
+//		$('.log').html('个人中心');
+		$('.li4').addClass("oneborder");
+		$('.li1').removeClass("li1");
+		$('.li2').removeClass("oneborder");
+		$('.li3').removeClass("oneborder");
+		$('.ones').hide();
+		$('.twos').hide();
+		$('.threes').hide();
+		$('.fours').show(400);
+	});
+	//个人信息
+//	function getParam(){
+//		C1=window.location.href.split("?")[1]; //得到id=楼主
+//      C2=C1.split("&")[1]; //得到楼主
+//		C3=C2.split("=")[1]; //得到楼主               
+//		return C3;
+//	};
+//	var cc=getParam();
+//	if(cc==001){
+//		$('.ones').show();
+//		$('.twos').hide(400);
+//		$('.threes').hide();
+//		$('.fours').hide();
+//	}
+	//返回值
+	function yaa(){
+//	var strjson = '{"id":"", "nickname":"' + name + '","mobile":"' + phone + '","city":"' + address + '}';
+	var rst = query_data("filluserinfo","");
+	var rst=JSON.parse(rst);
+	$('.log').append(`
+		<div class="log11"><img src="${rst[0].headimgurl}"></div>
+		<div class="log1">
+			<span>${rst[0].nickname}</span><br />
+			<div>
+				<span>手机号:${rst[0].mobile}</span>	
+			</div>
+		</div>
+		<a href="index.php?s=/w16/Newdun/Newdun/invitecode" style="position: absolute;top:20px;left:310px;">
+			<img style="width:20px;height:20px;" src="{:ADDON_PUBLIC_PATH}/img/yqm.png">
+		</a>		
+		`)
+	}
+	yaa()
+	//盟友
+	function mengyou(){
+		var strjson=query_data("inviderview","")
+		var strjson = JSON.parse(strjson)
+		var x=0;
+	    for(var i=0;i<strjson.length;i++){
+	        x +=strjson[i].total_amount
+	    }
+	    var x = x * 0.05;
+	    if(x == 0){
+	    	$('.moneyally').append(`
+	    		<p>盟友贡献业绩</p>
+				<p style="font-size: 14px; color: #44C0FF;font-weight: bold;" class="moneymeng">0元</p>
+	    	`)	    	
+	    }else{
+	    	$('.moneyally').append(`
+	    		<p>盟友贡献业绩</p>
+				<p style="font-size: 14px; color: #44C0FF;font-weight: bold;" class="moneymeng">${x}元</p>
+	    	`)	
+	    }	    	    
+	}
+	mengyou()
+	//个人业绩
+	function ya(){
+//	var strjson = '{"id":"", "nickname":"' + name + '","mobile":"' + phone + '","city":"' + address + '}';
+	var rst = query_data("pointvalue","")
+	var rst = JSON.parse(rst)
+	
+	if(rst.length == 0){
+		$('.twos').append(`
+			<div class="icons">
+				<div class="tops">当前可兑换New盾数</div>
+				<div class="zhi">0</div>
+			</div>
+			<p>当前New盾指数：<span>10</span></p>
+			<p>今日馈赠New盾数：<span>0</span>个</p>
+			<div class="cen">
+				<a href="index.php?s=/w16/Newdun/Newdun/cashexchangeedit">
+					<button type="button" name="" class="lu">我要兑换</button>	
+				</a>
+				<span class="da">
+					<a href="index.php?s=/w16/Newdun/Newdun/cashexchange">
+						历史兑换
+					</a>
+				</span>
+			</div>
+		`)
+	}else{
+		$('.twos').append(`
+			<div class="icons">
+				<div class="tops">当前可兑换New盾数</div>
+				<div class="zhi">${rst[0].pointvalue}</div>
+			</div>
+			<p>当前New盾指数：<span>10</span></p>
+			<p>今日馈赠New盾数：<span>${rst[0].pv_increase}</span>个</p>
+			<div class="cen">
+				<a href="index.php?s=/w16/Newdun/Newdun/cashexchangeedit">
+					<button type="button" name="" class="lu">我要兑换</button>	
+				</a>
+				<span class="da">
+					<a href="index.php?s=/w16/Newdun/Newdun/cashexchange">
+						历史兑换
+					</a>
+				</span>
+			</div>
+		`)
+	}	
+		if(rst.length == 0){
+//			$('.money').append(`
+//			0元
+//			`)	
+			$('.moneyper').append(`
+				<p>直接打款业绩</p>
+				<p style="font-size: 18px; color: #44C0FF;font-weight: bold;">0元</p>	
+			`)
+		}else{
+			var total_amount = parseInt(rst[0].total_amount)
+//			$('.money').append(`
+//			${total_amount}元
+//			`)	
+			$('.moneyper').append(`
+				<p>直接打款业绩</p>
+				<p style="font-size: 18px; color: #44C0FF;font-weight: bold;" class="moneyp">${total_amount}元</p>	
+			`)
+		}
+		$('.money').text(parseInt($('.moneyp').text()) + parseInt($('.moneymeng').text()) + "元")
+	
+	}
+	ya()
+
+//排名
+function paiming(){
+	var strjson=query_data("filluserinfoview", '1=1',"");
+//	alert(strjson)
+	var strjson = JSON.parse(strjson)
+//	alert(strjson)
+		for(i=0;i<strjson.length-1;i++){
+	        for(j=0;j<strjson.length-1-i;j++){
+	            if(Number(strjson[j].total_amount)<Number(strjson[j+1].total_amount)){
+	                var temp=strjson[j];
+	                strjson[j]=strjson[j+1];
+	                strjson[j+1]=temp;
+	            }
+	        }
+	       
+	   }
+	var n1 = get_user_id()
+	strjson.map(function(val,index){
+		if(val.uid==get_user_id()){
+				$('tops').append(`
+					<p>
+					本周排名<span>第${index}名</span>
+				    </p>
+				`)
+			}
+	})
+			
+	strjson.map(function(val,index){
+		if(val.total_amount==null){
+			val.total_amount=0.00
+		}
+		val.mobile = val.mobile.substr(7,4)
+		$('.botDate').append(`
+	 		<div>
+	 			<span>${index+1}</span>
+				<span>${val.nickname}</span>
+				<span>${val.mobile}</span>
+				<span>${val.total_amount}</span>
+			</div><br />
+	 	`);
+	})
+}
+paiming()
+})
+</script>
+</body>
+</html>

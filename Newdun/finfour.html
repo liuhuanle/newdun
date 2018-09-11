@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/fin.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid fitwo">
+	<header>
+		<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div class="xi">兑现审核</div>
+	</header>
+	<div class="per">
+		<div class="sonal">
+			
+		</div>
+		<div class="say">
+			<div>审核说明：</div>
+			<textarea class="form-control" rows="3" placeholder="拒绝通过时必填" id="tea"></textarea>
+			<div class="color">拒绝通过请填写具体原因</div>
+		</div>
+		<div class="ti">
+			<input type="button" value="审核通过" class="pass" id="pas" onclick="guo()">
+			<input type="button" value="拒绝" class="refused" onclick="over()">
+			<div>
+				<input type="text" name="" id="news" class="" />
+				<input type="button" value="送New盾(测试)" class="pass" style="margin-top: 30px;" onclick="add()">
+			</div>
+		</div>
+		<div class="titwo">
+			<div>审核说明：</div>
+			<div>信息正确,审核通过</div>
+			<input type="button" value="审核已通过" class="again">
+		</div>
+		<div class="tithre">
+			<div>审核说明：</div>
+			<div>信息有误,审核不通过</div>
+			<input type="button" value="审核已拒绝" class="agains">
+		</div>
+	</div>
+</div>
+
+<script>
+//	var str = getDataViewColumn("cashexchangeedit"); console.log(str);
+
+	function getParam(){
+		C1=window.location.href.split("?")[1]; //得到id=楼主
+                C2=C1.split("&")[1]; //得到楼主
+		C3=C2.split("=")[1]; //得到楼主
+                
+		return C3;
+	};
+//
+//	function getParam(){
+//		C1=window.location.href.split("?")[1]; //得到id=楼主
+//		C2=C1.split("=")[1]; //得到楼主
+//		return C2;
+//	};
+	var cc=getParam();
+	function add(){
+		var strjson=query_data("cashexchange","");
+		var strjson = '{ "rows" : ' + strjson+ '}';
+		//console.log(strjson);
+		var obj2 = jQuery.parseJSON(strjson);
+		//alert(obj2);
+
+		for(var i=0;i<obj2.rows.length;i++){
+//			alert(obj2.rows[i].id,"id");
+//			alert(cc,"cc");
+			if(obj2.rows[i].id!=cc){
+				continue;
+			}else{
+//				var strjson=query_data("donate","");
+//				alert(strjson);
+				//console.log(obj2.rows[i]);
+				var openid=obj2.rows[i].openid;
+				var remark=obj2.rows[i].remark;
+				var amount=obj2.rows[i].amount;
+				var news=document.getElementById('news').value;
+				var sdate=(new Date()).toLocaleDateString();
+				var dates=sdate.replace(/\//g,'.');
+				//console.log(dates);
+				var strjson = '{"id":"","date":"'+dates+'", "openid":"'+openid+'","points":"'+news+'","remark":"'+remark+'"}';
+				//alert(strjson);
+				var rst = save_data("donate",strjson,0);
+				//alert(rst);
+				var reust=JSON.parse(rst);
+				var result=reust[0].result;
+				
+				BootstrapDialog.show({  
+		            title: '系统提示',  
+		            message: result
+	       	});
+	       		break;
+			}
+			
+		}
+	}
+	var strjson=query_data("cashexchange","");
+	alert(strjson);
+	// console.log(rsts);
+	var strjson = '{ "rows" : ' + strjson+ '}';
+//	console.log(strjson);
+	var obj = jQuery.parseJSON(strjson); //必须包含 jQuery.
+	//alert(obj);
+//var str = getDataViewColumn("cashexchangeedit");
+	var check;
+//	var does=do_app("cashexchange",strjson,"");
+
+//	console.log(does);
+	for(var i=0;i<obj.rows.length;i++)
+	{
+		var sdate = eval("obj.rows["+ i +"].create_time");//id=字段名称
+		var amount = eval("obj.rows["+ i +"].amount");
+		var nickname = eval("obj.rows["+ i +"].nickname");
+		var mobile = eval("obj.rows["+ i +"].mobile");
+		var remark = eval("obj.rows["+ i +"].remark");
+		if(obj.rows[i].id==cc){
+			var statu=obj.rows[i].status;
+			if(statu=='审批通过'){
+				$('.sonal').append(
+						'<p>'+"兑现人："+nickname+'</p>'+
+						'<p>'+"手机号码："+mobile+'</p>'+
+						'<p>'+"兑现日期："+sdate+'</p>'+
+						'<p>'+"兑现金额："+amount+'</p>'+
+						'<p>'+"备注："+remark+'</p>'
+					);
+				$(function(){
+					$(".say").hide();
+					$(".ti").hide();
+					$('.titwo').show();
+				})
+			}
+			else if(statu=='驳回'){
+				$('.sonal').append(
+						'<p>'+"回款人："+nickname+'</p>'+
+						'<p>'+"手机号码："+mobile+'</p>'+
+						'<p>'+"回款日期："+sdate+'</p>'+
+						'<p>'+"回款金额："+amount+'</p>'+
+						'<p>'+"备注："+remark+'</p>'
+					);
+				$(function(){
+					$(".say").hide();
+					$(".ti").hide();
+					$('.titwo').hide();
+					$('.tithre').show();
+				})
+			}
+			else{
+	//			console.log(obj.rows[i]);
+				var amounts=obj.rows[i].amount;
+				var ids=obj.rows[i].id;
+				var points=obj.rows[i].points;
+				var exchangerate=obj.rows[i].exchangerate;
+				var openids=obj.rows[i].openid;
+				var create_time=obj.rows[i].create_time;
+				var nickname=obj.rows[i].nickname;
+				var truename=obj.rows[i].truename;
+				var mobile=obj.rows[i].mobile;
+				var headimgurl=obj.rows[i].headimgurl;
+				var city=obj.rows[i].city;
+				var province=obj.rows[i].province;
+				var country=obj.rows[i].country;
+				var statu=obj.rows[i].status;
+				var pvrates=obj.rows[i].pvrate;
+				var remarks=obj.rows[i].remark;
+				function guo(){
+					var tea=document.getElementById('tea').value;
+					var strjson = '{"id":"'+ids+'","reason":"'+tea+'","points":"","exchangerate":"","amount":"'+amounts+'","remark":"","status":"'+statu+'","exchange_date":"","create_time":"'+create_time+'","modify_time":"","openid":"'+openids+'","approve_date":"","nickname":"'+nickname+'","truename":"'+truename+'","mobile":"'+mobile+'","headimgurl":"'+headimgurl+'","city":"'+city+'","province":"'+province+'","country":"'+country+'"}';
+					//console.log(strjson);
+					var en=do_app("cashexchange",strjson,0);
+					//alert(en);
+					//console.log(en);
+							BootstrapDialog.show({  
+				            title: '系统提示',  
+				            message: '审核成功'
+			    		});
+			//		alert('审核成功！');
+				}
+				function over(){
+					var tea=document.getElementById('tea').value;
+					var strjson = '{"id":"'+ids+'","reason":"'+tea+'","points":"","exchangerate":"","amount":"'+amounts+'","remark":"","status":"'+statu+'","exchange_date":"","create_time":"'+create_time+'","modify_time":"","openid":"'+openids+'","approve_date":"","nickname":"'+nickname+'","truename":"'+truename+'","mobile":"'+mobile+'","headimgurl":"'+headimgurl+'","city":"'+city+'","province":"'+province+'","country":"'+country+'"}';
+					//console.log(strjson);
+					var en=do_app("cashexchange",strjson,2);
+	//				alert(en);
+							BootstrapDialog.show({  
+				            title: '系统提示',  
+				            message: '拒绝成功'
+			    		});
+			//		alert('审核成功！');
+				}
+				$('.sonal').append(
+					'<p>'+"回款人："+nickname+'</p>'+
+					'<p>'+"手机号码："+mobile+'</p>'+
+					'<p>'+"回款日期："+sdate+'</p>'+
+					'<p>'+"回款金额："+amount+'</p>'+
+					'<p>'+"备注："+remark+'</p>'
+				);
+				break;
+			}
+		}
+	}
+//		//alert(str);
+
+</script>
+</body>
+</html>

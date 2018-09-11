@@ -1,0 +1,53 @@
+*{margin: 0; padding: 0;}
+.financial .bot1{margin-top: 10px;}
+.financial .bots{width: 100%; padding: 0 15px; display: none;}
+.financial .bots .top{border-bottom: 1px solid #ccc; padding-bottom: 10px;text-align: center;}
+.financial .bots .zeng{overflow: hidden;text-align: center;}
+.financial .bots .zeng input{float: left; width: 70%; margin-right: 5%;}
+.financial .bots .zeng .btn{background-color: #44C0FF; float: left; width: 25%;}
+.financial .bots .zeng{border-bottom: 1px solid #ccc;padding-bottom: 10px;}
+.financial .bots .sele{clear: both; margin-top: 20px;}
+.financial .bots .sele div{}
+.financial .bots .sele p{text-align: center;}
+.financial .bots .sele div{margin-bottom: 15px;}
+.financial .bots .sele .data1{float: left; width: 45%;}
+.financial .bots .sele .zhi{float: left; width: 10%; text-align: center; margin-top: 8px; }
+.financial .bots .sele .data2{float: left; width: 45%;}
+.financial .bots .sele .so{text-align: center;}
+.financial .bots .sele .botName{display: none;}
+.financial .bots .sele .botTel{display: none;}
+.financial .bots .sele .btn{background-color: #44C0FF;padding: 5px 25px;}
+.financial .bots .people{margin-bottom: 15px;margin-top: 35px; border-top: 1px solid #ccc; overflow: hidden; padding-top: 25px;}
+.financial .bots .people .tit{border-bottom: 1px solid #ccc; overflow: hidden; text-align: center;}
+.financial .bots .people .tit div{float: left; width: 25%;padding-bottom: 10px;}
+.financial .bots .people .cont{overflow: hidden; text-align: center; border-bottom: 1px solid #ccc; line-height: 40px;}
+.financial .bots .people .cont div{float: left;width: 25%;}
+.financial .bots .people .cont .first{text-align: center;}
+.financial .mesage{margin-top: 10px;}
+.financial .meg{display: none;}
+.financial .meg .bnew{text-align: center; margin: 15px 0; color: #fff;}
+.financial .meg .bnew a{color: #fff;}
+.financial .meg .bnew button{background-color: #44C0FF; border: none; border-radius: 10px; width: 80%; padding: 10px 0; }
+.financial .meg .mecon .metit{overflow: hidden; text-align: center;}
+.financial .meg .mecon .metit span{float: left; width: 33.3%;}
+.financial .meg .mecon .mebot{overflow: hidden; text-align: center; margin-top: 12px; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
+.financial .meg .mecon .mebot span{float: left; width: 33.3%; margin: 3px 0;}
+.bian{background-color: #ccc;}
+
+
+.addmessage{max-width: 960px; margin: 0 auto;padding: 0;}
+.addmessage header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.addmessage header span{float: left; margin-top: 3.8px;}
+.addmessage header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.addmessage header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.addmessage header .glyphicon-menu-left{}
+.addmessage header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.addmessage .addcon{font-weight: normal; padding: 0 15px;}
+.addmessage .addcon label{font-weight: normal;}
+.addmessage .addcon .addtit{overflow: hidden;}
+.addmessage .addcon .addtit .radioLeft{float: left; text-align: center; width: 50%;}
+.addmessage .addcon .addtit .radioRight{float: right; text-align: center;width: 50%;}
+.addmessage .addcon .btt{text-align: center; margin-bottom: 20px;}
+.addmessage .addcon .look{background-color: #0066FF; border: none; border-radius: 10px; padding: 5px 25px; color: #fff; margin-right: 10px;}
+.addmessage .addcon .send{background-color: #44C0FF; border: none; border-radius: 10px; padding: 5px 25px;color: #fff;}
+.addmessage .addcon #two{display: none;}

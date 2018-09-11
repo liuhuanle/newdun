@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/all.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+     <!--    <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+ 
+ <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+ <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid show">
+	<header>
+		<div class="blue" onClick="javascript:history.go(-1)"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div class="hui">打款明细</div>
+		<div class="jilu"></div>
+	</header>
+	<div class="con">
+		<div><span>时间</span><span>金额</span><span>状态</span></div>
+	</div>
+</div>
+<script>
+	function userinfo(){
+		var rst = query_data("filluserinfo","");		
+		alert(rst)
+		var rst=JSON.parse(rst);
+		console.log(rst)
+	//	 var strjson=JSON.parse(strjson);
+	//	 strjson.map(function(index,val){
+	//	 	$('.con').append(`
+	//	 	<div class="inline"><span>${index.remittance_date}</span><span>${index.amount}</span><span>${index.status}</span></div>
+	//	 	`);
+	//	 })
+	}
+	userinfo()
+</script>
+</body>
+</html>

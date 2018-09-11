@@ -1,0 +1,252 @@
+*{margin: 0; padding: 0;}
+
+.index{max-width: 960px; margin: 0 auto;padding: 0;}
+.index header{ overflow: hidden; background-color:#F8F8F8; padding: 10px 0px; width: 100%;}
+.index header span{float: left; margin-top: 3.8px;}
+.index header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.index header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.index header .glyphicon-menu-left{}
+.index header .jilu{ text-align: right; margin-right: 1%;}
+.index .bananer img{width: 100%;}
+.index .cont{ margin: 0 5%;margin-top: 20px; }
+/*.index .cont div{clear: both; margin-bottom: 20px;}*/
+/*.index .cont label{float: left; width: 25%; text-align: right; line-height: 35px; color: #515151; font-weight: normal;}
+.index .cont input{width: 65%; height: 35px;}
+.index .cont textarea{width: 65%; height: 150px;}*/
+.index .btns{text-align: center; margin: 0 auto; width: 100%; margin-top: 30px;}
+.index .btns input{background-color: #44C0FF; color: #fff; padding: 10px 30px; margin: 0 auto; border: none; border-radius: 10px;margin-left: 75px;}
+.index .btns .hui{margin-left: 20px; color: #44C0FF;}
+.index .btns .hui a{color: #44C0FF;}
+.show{max-width: 960px; margin: 0 auto;padding: 0;}
+.show header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px; width: 100%;}
+.show header span{float: left; margin-top: 3.8px;}
+.show header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.show header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.show header .glyphicon-menu-left{}
+.show header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.show .con div{border-bottom: 1px solid #ccc; margin-bottom: 15px; clear: both; overflow: hidden; padding-bottom: 15px;}
+.show .con div span{float: left; width: 33.3%; text-align: center;}
+
+/*duixian开始*/
+.duixian{max-width: 960px; margin: 0 auto;padding: 0;}
+.duixian header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.duixian header .xi{}
+.duixian header span{float: left; margin-top: 3.8px;}
+.duixian header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.duixian header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.duixian header .glyphicon-menu-left{}
+.duixian header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.duixian .con div{border-bottom: 1px solid #ccc; margin-bottom: 15px; clear: both; overflow: hidden; padding-bottom: 15px;}
+.duixian .con div span{float: left; width: 25%; text-align: center;}
+.duixian .con .wan{color: #57DC60;}
+.duixian .con .shen{color: #f00;}
+/*duixian结束*/
+
+/*duisum开始*/
+.duisum{max-width: 960px; margin: 0 auto;padding: 0;}
+.duisum header{margin-bottom: 20px; overflow: hidden;background-color:#F8F8F8; padding: 10px 0px;}
+.duisum header .new{}
+.duisum header span{float: left; margin-top: 3.8px;}
+.duisum header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.duisum header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.duisum header .glyphicon-menu-left{}
+.duisum header .jilu{ margin-top: 5px; text-align: right; margin-right: 1%;}
+.duisum .con{text-align: center; width: 100%;}
+.duisum .con div{width: 100%;overflow: hidden;}
+.duisum .con .nin{margin-top: 60px;}
+.duisum .con .money{font-size: 3rem; color: #44C0FF; font-weight: bold; margin-bottom: 30px;}
+.duisum .con .new{}
+.duisum .con .inp{margin-top: 10px;}
+.duisum .con .inp input{line-height: 30px; height: 30px; border: 1px solid #ccc; width: 200px;}
+.duisum .con .btns{margin-top: 100px; overflow: hidden; }
+.duisum .con .btns input{background-color: #44C0FF; border: none; padding: 10px 30px; color: #fff; border-radius: 6px; margin-left: 90px;}
+.duisum .con .btns .ming{color: #44C0FF;margin-left: 40px;}
+/*duisum结束*/
+
+/*login开始*/
+.login{max-width: 960px; margin: 0 auto;padding: 0;}
+.login header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.login header span{float: left; margin-top: 3.8px;}
+.login header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.login header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.login header .glyphicon-menu-left{}
+.login header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.login .cont{width: 100%; margin-top: 150px;padding: 0 40px;}
+.login .cont div{width: 100%; margin-bottom: 20px;}
+.login .cont div input{line-height: 40px; height: 40px; border: 1px solid #ccc;width: 100%; border-radius: 4px; width: 100%;}
+.login .cont .code input{width: 50%; float: left;}
+.login .cont .code canvas{float: left; width: 50%;line-height: 40px; height: 40px;}
+.login .bott{width: 100%; text-align: center;}
+.login .bott .btns{margin-top: 100px;}
+.login .bott .btns input{border: none; background-color: #0066FF; padding: 10px 30px; color: #fff; border-radius: 6px;}
+.login .bott .zhu{margin-top: 30px; margin-bottom: 20px;}
+/*login结束*/
+
+/*zhuce开始*/
+.zhuce{max-width: 960px; margin: 0 auto;padding: 0;}
+.zhuce header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.zhuce header span{float: left; margin-top: 3.8px;}
+.zhuce header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.zhuce header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.zhuce header .glyphicon-menu-left{}
+.zhuce header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.zhuce .cont{width: 100%; margin-top: 60px; padding: 0 40px;}
+.zhuce .cont div{width: 100%; text-align: center;}
+.zhuce .cont div input{line-height: 40px; height: 40px; border: 1px solid #ccc; margin-bottom: 15px; width: 100%; border-radius: 4px;}
+.zhuce .cont .yan{text-align: inherit;}
+.zhuce .cont .yan input{width: 60%; float: left;}
+.zhuce .cont .yan .span{width: 40%; float: left; line-height: 40px; height: 40px; background-color: #ccc; color: #fff;text-align: center; border-radius: 4px;}
+.zhuce .bot div{text-align: center;}
+.zhuce .bot .btns{margin: 25px 0;}
+.zhuce .bot .btns input{border:none; background-color: #0066FF;padding: 10px 30px; color: #fff; border-radius: 6px;}
+.zhuce .bot .zhu{margin-top: 30px; margin-bottom: 20px;}
+/*zhuce结束*/
+
+/*personal开始*/
+.personal{max-width: 960px; margin: 0 auto;padding: 0;}
+.personal header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.personal header .topZ{}
+.personal header span{float: left; margin-top: 3.8px;}
+.personal header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.personal header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.personal header .glyphicon-menu-left{}
+.personal header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.personal .mid div{border-bottom: 1px solid #ccc; overflow: hidden; margin: 20px 10px; padding:0 12px; padding-bottom: 15px;}
+.personal .mid div img{border-radius: 50%; width: 50px; height: 50px;}
+.personal .mid div .right{float: right;}
+.personal .mid div .left{float: left;}
+.personal .mid div .lefts{float: left; margin-top: 24px;}
+/*personal结束*/
+
+
+.ally{max-width: 960px; margin: 0 auto;padding: 0;}
+.ally header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.ally header span{float: left; margin-top: 3.8px;}
+.ally header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.ally header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.ally header .glyphicon-menu-left{}
+.ally header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.ally .mids{padding: 0 15px;}
+.ally .mids .icons{border: 1px solid #ccc; border-radius: 50%; text-align: center; width: 170px; height:170px; margin: 0 auto; box-shadow:0px 10px 5px #ccc;}
+.ally .mids .icons div{color: #44C0FF;}
+.ally .mids .icons .tops{margin-top: 60px;}
+.ally .mids .icons .shu{font-weight: bold; font-size: 20px;}
+.ally .mids .bottom{ border: 1px solid #ccc; margin: 40px 20px;}
+.ally .mids .bottom .topName{overflow: hidden; text-align: center; border-bottom: 1px solid #ccc;line-height: 30px; padding: 10px 0px;}
+.ally .mids .bottom .topName span{float: left; width: 33.3%;}
+.ally .mids .bottom .topName .name{border-right: 1px solid #ccc;}
+.ally .mids .bottom .topName .time{border-right: 1px solid #ccc;}
+.ally .mids .bottom .botDate{overflow: hidden; text-align: center;}
+.ally .mids .bottom .botDate div{line-height: 30px;}
+.ally .mids .bottom .botDate span{float: left; width: 33.3%;}
+
+
+.personcenter{max-width: 960px; margin: 0 auto;padding: 0;}
+.personcenter header{ overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.personcenter header span{float: left; margin-top: 3.8px;}
+.personcenter header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.personcenter header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.personcenter header .glyphicon-menu-left{}
+.personcenter header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.personcenter nav{overflow: hidden; border: 1px solid #ccc;color: #000;}
+.personcenter nav li{ float: left; width: 25%; list-style: none; text-align: center; line-height: 50px;}
+.personcenter nav li a{text-decoration: none; color: #000;}
+.personcenter .box .ones{margin:0 15px; margin-top: 30px;}
+.personcenter .box .ones .money{text-align: center; font-size: 26px; color: #44C0FF; font-weight: bold; border: none;}
+.personcenter .box .ones .moneyper{border: 1px solid #ccc; border-radius: 50%; text-align: center; width: 150px; height:150px; margin: 0; box-shadow:0px 10px 5px #ccc;padding-top: 50px;margin-left: 30px;}
+.personcenter .box .ones .moneyally{border: 1px solid #ccc; border-radius: 50%; text-align: center; width: 100px; height:100px; margin: -110px 220px; box-shadow:0px 10px 5px #ccc;padding-top: 30px;}
+.personcenter .box .ones .cen{text-align: center;margin-top: 180px;}
+.personcenter .box .ones .lu{background-color: #44C0FF; padding: 10px 25px; border-radius: 5px; color: #fff; border: none; margin-left: 75px;}
+.personcenter .box .ones .hui{float: right; margin-top: 10px;}
+.personcenter .box .ones .da{margin-left: 15px;}
+.personcenter .box .ones .da a{color: #44C0FF;}
+
+.personcenter .box .twos{display: none;margin:0 15px; margin-top: 30px;}
+.personcenter .box .twos .icons{border: 1px solid #ccc; border-radius: 50%; text-align: center; width: 170px; height:170px; margin: 0 auto; box-shadow:0px 10px 5px #ccc; margin-bottom: 50px;}
+.personcenter .box .twos .icons div{color: #44C0FF;}
+.personcenter .box .twos .icons .tops{margin-top: 60px;}
+.personcenter .box .twos p{text-align: center;}
+.personcenter .box .twos p span{color: #44C0FF; font-weight: bold;}
+.personcenter .box .twos .icons .zhi{font-size: 20px; font-weight: bold;}
+.personcenter .box .twos .cen{text-align: center; margin-top: 50px; margin-bottom: 30px;}
+.personcenter .box .twos .lu{background-color: #44C0FF; padding: 10px 25px; border-radius: 5px; color: #fff; border: none; margin-left: 75px;}
+.personcenter .box .twos .hui{float: right; margin-top: 10px;}
+.personcenter .box .twos .da{margin-left: 15px;}
+.personcenter .box .twos .da a{color: #44C0FF;}
+.personcenter .box .threes{display: none;margin:0 15px; margin-top: 30px;}
+.personcenter .box .threes .icons{border: 1px solid #ccc; border-radius: 50%; text-align: center; width: 170px; height:170px; margin: 0 auto; box-shadow:0px 10px 5px #ccc;}
+.personcenter .box .threes .icons div{color: #44C0FF;}
+.personcenter .box .threes .icons .tops{margin-top: 60px;}
+.personcenter .box .threes .icons span{font-size: 18px; font-weight: bold;}
+.personcenter .box .threes .bottom{ border: 1px solid #ccc; margin: 40px 0px;}
+.personcenter .box .threes .bottom .topName{overflow: hidden; text-align: center; border-bottom: 1px solid #ccc;line-height: 30px; padding: 10px 0px;}
+.personcenter .box .threes .bottom .topName span{float: left; width: 24.8%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.personcenter .box .threes .bottom .botDate{overflow: hidden; text-align: center;}
+.personcenter .box .threes .bottom .botDate div{line-height: 30px;height: 30px;overflow: hidden;}
+.personcenter .box .threes .bottom .botDate span{float: left; width: 24.8%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.personcenter .box .threes .ton{text-align: center;}
+.personcenter .box .threes .butt{background-color: #44C0FF; padding: 10px 25px; border-radius: 5px; color: #fff; border: none; margin-bottom: 30px;}
+
+.personcenter .box .fours{display: none;}
+.personcenter .box .fours .topImg{text-align: center; background: url(../img/bg.png); width: 100%;}
+.personcenter .box .fours .topImg img{width: 100%; width: 50px; height: 50px;}
+.personcenter .box .fours .topImg dl{padding: 15px 0;}
+.personcenter .box .fours .topImg dl dd{color: #fff;}
+.personcenter .box .fours .bott{overflow: hidden; margin: 0 10px;}
+.personcenter .box .fours .bott a{}
+.personcenter .box .fours .bott img{width: 100%; width: 28px; height: 28px;}
+.personcenter .box .fours .bott span{float: left; width: 33.3%; line-height: 45px;}
+.personcenter .box .fours .bott div{ overflow: hidden;clear: both; border-bottom: 1px solid #ccc;}
+.personcenter .box .fours .bott .left{width: 12%;}
+.personcenter .box .fours .bott .glyphicon-menu-right{color: #636363; text-align: right;}
+.personcenter .box .fours .bott .my{text-align: left;width: 54.3%;}
+.personcenter a{text-decoration: none; color: #000;}
+.oneborder{border-bottom: 2px solid #44C0FF; }
+.onecolor{color: #44C0FF;}
+.li1{border-bottom: 2px solid #44C0FF;}
+
+
+.result{max-width: 960px; margin: 0 auto;padding: 0;}
+.result header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.result header span{float: left; margin-top: 3.8px;}
+.result header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.result header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.result header .glyphicon-menu-left{}
+.result header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.result .bos{overflow: hidden; width: 100%; padding: 0 20px;}
+.result .bos .tent{overflow: hidden; width: 100%; border-bottom: 1px solid #ccc; margin-bottom: 30px; padding-bottom: 15px;}
+.result .bos .tent div{float: left; width: 50%;}
+.result .bos .tent .right{text-align: right;}
+.result .bos .tent .left{margin-top: 6px;}
+
+
+.invite{max-width: 960px; margin: 0 auto;padding: 0;}
+.invite header{overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.invite header span{float: left; margin-top: 3.8px;}
+.invite header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.invite header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.invite header .glyphicon-menu-left{}
+.invite header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.invite .content{width: 100%; text-align: center; background-color: #44C0FF; padding: 50px 20px;}
+.invite .content .black{background-color: #000;height: 18px; border-radius: 6px;}
+.invite .content .yao{background-color: #fff; border-bottom: 1px dashed #0066FF; padding: 40px 0;}
+.invite .content .yao p{font-size: 22px; color: #44C0FF; font-weight: bold;}
+.invite .content .yao input{background-color: #44C0FF; padding: 6px 35px; color: #fff; border: none; border-radius: 5px; margin-top: 30px;}
+.invite .content .write{padding: 0 20px;}
+.invite .content .wei{background-color: #fff; padding: 30px 0px; }
+
+
+.card{max-width: 960px; margin: 0 auto;padding: 0;}
+.card header{margin-bottom: 20px; overflow: hidden; background-color:#F8F8F8; padding: 10px 0px;}
+.card header span{float: left; margin-top: 3.8px;}
+.card header div{float: left; width: 31.3%; font-size: 2rem; text-align: center;}
+.card header .blue{color: #44C0FF; text-align: left; margin-left: 2%;}
+.card header .glyphicon-menu-left{}
+.card header .jilu{margin-top: 5px; text-align: right; margin-right: 1%;}
+.card .mids{padding: 0 15px;}
+.card .mids .uploads{text-align: center;}
+.card .mids .uploads .chuan img{width: 100%; height: 130px; border-radius: 6px;}
+.card .mids .uploads .chuan img{border: 1px solid #ccc;}
+.card .mids .uploads .place{margin-bottom: 20px;}
+.card .mids .bt{text-align: center; margin-top: 30px; margin-bottom: 30px;}
+.card .mids .inp{background-color: #44C0FF; border: none; padding: 5px 10px; border-radius: 5px; color: #fff;}

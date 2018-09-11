@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">  
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>晚九点</title>
+    <link href="{:ADDON_PUBLIC_PATH}/simpleboot3/themes/simpleboot3/bootstrap.min.css?v={:SITE_VERSION}" rel="stylesheet" type="text/css">
+     
+        
+        <link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/easyui/themes/metro/easyui.css">  
+        <link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/easyui/themes/mobile.css">  
+        <link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/easyui/themes/icon.css">  
+        <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+        <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script> 
+        <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.mobile.js"></script> 
+        <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+        <script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script>
+
+<script>
+    function sendmsgtest()
+    {
+       /*alert("hi4");
+       var str = get_user_id(); 
+       //var str = check_valid_user(); 
+       alert(str);
+       return;  */
+       
+       var str = compareverifycode("18770783622","8797");
+       //var str = verifyphonecode("18770783622");
+        alert(str);    
+    }
+
+       
+</script>
+</head>
+<body>
+	<div class="easyui-navpanel">
+		<header>
+			<div class="m-toolbar">
+				<span class="m-title">经销商管理系统</span>
+			</div>
+		</header>
+            
+            <div id="ullist" data-options="
+				fit: true,
+				border: false,
+				lines: true
+				">
+                
+                
+		</div>
+                
+		<ul id="list" class="m-list">
+			<li> 
+				<img class="list-image" onclick="openform('salesbackedit');" src="{:ADDON_PUBLIC_PATH}/images/salesbackedit.png"/>
+				<div class="list-header" onclick="openform('salesbackedit');">录入回款单</div>
+				<div class="list-content" onclick="openform('salesbackedit');">经销商回款单录入.</div>
+			</li>
+			<li>
+				<img class="list-image" onclick="openform('salesback');" src="{:ADDON_PUBLIC_PATH}/images/salesback.png"/>
+				<div class="list-header" onclick="openform('salesback');">回款单汇总</div>
+				<div class="list-content" onclick="openform('salesback');">可以进行回款明细记录查询，审批等.</div>
+			</li>
+                         <li>  
+				<div class="list-content" onclick="openform('testajax');"></div>
+			</li>
+			<li>
+				<img class="list-image" onclick="openform('cashexchangeedit');" src="{:ADDON_PUBLIC_PATH}/images/cashexchangeedit.png"/>
+				<div class="list-header" onclick="openform('cashexchangeedit');">兑换现金</div>
+			<!--	<div class="list-content" onclick="openform('cashexchangeedit');">经销商兑换现金.</div> -->
+			</li>
+			<li>
+				<img class="list-image" onclick="openform('cashexchange');" src="{:ADDON_PUBLIC_PATH}/images/cashexchange.png"/>
+				<div class="list-header" onclick="openform('cashexchange');">兑换现金汇总</div>
+				<div class="list-content" onclick="openform('cashexchange');">可进行兑换现金查询、审批等.</div>
+			</li>
+                        
+                        <li>  
+				<div class="list-content" onclick="openform('testajax');"></div>
+			</li>
+                        
+                        <li>
+				<img class="list-image" onclick="openform('niuduninfo');" src="{:ADDON_PUBLIC_PATH}/images/salesback.png"/>
+				<div class="list-header" onclick="openform('niuduninfo');">我的纽盾</div>
+				<div class="list-content" onclick="openform('niuduninfo');">我的纽盾</div>
+			</li>
+                       
+                        <li>
+				<img class="list-image" onclick="openform('filluserinfo');" src="{:ADDON_PUBLIC_PATH}/images/salesback.png"/>
+				<div class="list-header" onclick="openform('filluserinfo');">我的信息</div>
+				<div class="list-content" onclick="openform('filluserinfo');">我的信息</div>
+			</li>
+                        
+                        <li>
+				<img class="list-image" onclick="sendmsgtest();" src="{:ADDON_PUBLIC_PATH}/images/salesback.png"/>
+				<div class="list-header" onclick="sendmsgtest();">测试短信</div>
+				<div class="list-content" onclick="sendmsgtest();">测试短信</div>
+			</li>
+                        
+		</ul>
+	</div>
+	<style scoped>
+		#list .list-image{
+			width: 32px;
+			height: 32px;
+			border: 0;
+			margin-right: 5px;
+			float: left;
+		}
+		#list .list-header{
+			font-size: 16px;
+			font-weight: bold;
+		}
+		#list .list-content{
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	</style>
+</body>	
+</html>

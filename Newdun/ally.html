@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/all.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<!--<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.easyui.min.js"></script>  -->
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script> 
+ <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+ <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid ally">
+	<header>
+		<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div class="topZ">我的盟友</div>
+		<div class="jilu"></div>
+	</header>
+	<div class="mids">
+		<div class="icons">
+			<!--<div class="tops"></div>
+			<div><span class="shu">66</span>位盟友</div>-->
+		</div>
+		<div class="bottom">
+	
+	<div class="topName"><span class="name">姓名</span><span class="time">注册时间</span><span>贡献业绩</span></div>
+			<div class="botDate" class="min-height:50px">
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	function mengyou(){
+		var strjson=query_data("inviderview","")
+		var strjson = JSON.parse(strjson)
+			if(strjson.length == 0){
+				$('.icons').append(`
+					<div class="tops"></div>
+					<div><span class="shu">${strjson.length}</span>位盟友</div>
+				`)
+				$('.botDate').append(`
+				<div>当前还没有盟友</div>	
+				`)
+			}else{
+				$('.icons').append(`
+					<div class="tops"></div>
+					<div><span class="shu">${strjson.length}</span>位盟友</div>
+				`)
+				strjson.map(function(val,index){
+					$('.botDate').append(`
+					<div><span>${val.nickname}</span><span>${val.invite_date}</span><span>${val.total_amount*0.05}</span></div>					
+					`)
+				})
+			}
+	}
+	mengyou()
+</script>
+</html>

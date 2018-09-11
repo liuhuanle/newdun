@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>晚九点</title>
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/fin.css" />
+<link rel="stylesheet" href="{:ADDON_PUBLIC_PATH}/css/new.css" />
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/easyui/jquery.min.js"></script>  
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/thinkajax/thinkajax.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/myjs/main.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/bai.js"></script>
+<script type="text/javascript" src="{:ADDON_PUBLIC_PATH}/js/select.js"></script>
+ <link href="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.min.css" rel="stylesheet">
+ <script src="https://cdn.bootcss.com/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.min.js"></script>
+</head>
+<body>
+<div class="container-fluid financial">
+	<header>
+		<div class="blue" onClick="javascript:history.back()"><span class="glyphicon glyphicon-menu-left"></span>返回</div>
+		<div class="xi">财务查询</div>
+	</header>
+	<div class="top">
+		<div class="ones" id="navList"><a href="#" class="topco">用户信息</a></div>
+		<div class="twos"  id="navList"><a href="#">审核报单</a></div>
+		<div class="fours" id="navList"><a href="#">审核兑换</a></div>
+		<div class="threes" id="navList"><a href="#">审核用户</a></div>
+		<div class="bot1" id="song"><a href="#">白送new盾</a></div>
+		<div class="mesage" id="mess"><a href="#">消息中心</a></div>
+	</div>
+	<div class="on">
+		
+	</div>
+	<div class="second" style="display: none;">
+		
+	</div>
+	<div class="seconds" style="display: none;">
+		
+	</div>
+	<div class="thre">
+		
+	</div>
+		<div class="bots">
+			<p class="top">白送new盾</p>
+			<div class="zeng">
+				<input type="text" placeholder="请输入new盾数" class="form-control" id="newd">
+				<button class="btn" id="git" onclick="adds()">赠送</button>
+			</div>
+			<div class="sele">
+				<div>
+					<p>请选择搜索类型</p>
+					<select class="form-control" id="selec">
+						  <option class="zhu">注册时间</option>
+						  <option class="names">姓名</option>
+						  <option class="tels">手机号</option>
+						</select>
+				</div>
+				<div class="times">
+					<div class="data1"><input type="date" placeholder="" class="form-control" id="tim1"></div>
+					<div class="zhi">至</div>
+					<div class="data2"><input type="date" placeholder="" class="form-control" id="tim2"></div>
+				</div>
+				<div class="botName">
+					<input type="text" placeholder="请输入姓名" class="form-control" id="nam">
+				</div>
+				<div class="botTel">
+					<input type="tel" placeholder="请输入手机号" class="form-control" id="phone">
+				</div>
+				<div class="so"><button class="btn" id="searchs">搜索</button></div>
+			</div>
+			<div class="people">
+				<div class="tit">
+					<div><input type="checkbox" id="checkall" value="option1" name="checkall">全选</div>
+					<div>姓名</div>
+					<div>手机</div>
+					<div>注册时间</div>
+				</div>
+				<div class="contt">
+					
+				</div>
+			</div>
+	</div>
+	<div class="meg">
+		<div class="bnew"><a href="index.php?s=/w16/Newdun/Newdun/addmessage"><button>新增消息</button></a></div>
+		<div class="mecon">
+			<div class="metit">
+				<span>创建日期</span>
+				<span>标题</span>
+				<span>状态</span>
+			</div>
+			<div class="mebot">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	window.onload=function yan(){
+	var valid = checkisfm();
+//	alert(valid)
+	if(valid==1){
+		//window.location.href='salesbackedit.html';
+	}
+	else{
+			BootstrapDialog.show({
+            title: "系统提示",
+            message: "您没有权限！",
+            onhidden: function(dialogRef){
+               window.location.href='index.php?s=/w16/Newdun/Newdun/weihu';
+            }
+    	});
+	}
+	}
+</script>
+
+<script>
+	//消息通知
+	var strjson=query_data("sendmessage","","");
+	//alert(strjson);
+	var obj = jQuery.parseJSON(strjson);
+	obj.map(function(val,index){
+		$('.mebot').append(`
+			<div>
+				<span>${val.send_time}</span>
+				<span>${val.title}</span>
+				<span>${val.status}</span>
+			</div>
+		`)
+})
+</script>
+
+<script>
+//搜索
+	
+	var strjson=query_data("filluserinfoview", '1=1',"");
+	var strjson = '{ "rows" : ' + strjson+ '}';
+	var obj = jQuery.parseJSON(strjson);
+	for(var i=0;i<obj.rows.length;i++){
+   		var nickname = eval("obj.rows["+ i +"].nickname");
+		var mobile = eval("obj.rows["+ i +"].mobile");
+		var reg_time = eval("obj.rows["+ i +"].reg_time");
+	};
+
+	$(function(){
+		$('#searchs').click(function(){
+			var tim1=$('#tim1').val();
+			var tim2=$('#tim2').val();
+			var nam=$('#nam').val();
+			var phone=$('#phone').val();
+			//alert(nam);
+			//var formdate= reg_time>=tim1 and reg_time<=tim2 and nickname=nam and mobile=phone;
+			var formdate= nickname='真与假';
+//			alert(formdate);
+			var num=query_data("filluserinfoview","",formdate);
+		})
+	});	
+</script>
+<script>
+	//点击换类型
+	 $("#selec").change(function(){
+          var item = $("#selec").val();
+          if(item == "注册时间"){
+              $(".times").show();
+              $(".botName").hide();
+              $(".botTel").hide();
+          }
+          else if(item == "姓名"){
+              $(".times").hide();
+              $(".botName").show();
+              $(".botTel").hide();
+          }
+           else if(item == "手机号"){
+              $(".times").hide();
+              $(".botName").hide();
+              $(".botTel").show();
+          }
+     });
+</script>
+<script>
+	//报单审核
+	var strjson=query_data("salesback","");
+
+	var strjson = jQuery.parseJSON(strjson); //必须包含 jQuery.
+	for(i=0;i<strjson.length-1;i++){
+        for(j=0;j<strjson.length-1-i;j++){
+        	var a1 = strjson[j].remittance_date.split('-')
+        	var a2 = strjson[j+1].remittance_date.split('-')
+        	var a11 = a1[0] + a1[1] + a1[2]
+        	var a21 = a2[0] + a2[1] + a2[2]
+            if(parseInt(a11)<parseInt(a21)){
+                var temp=strjson[j];
+                strjson[j]=strjson[j+1];
+                strjson[j+1]=temp;
+            }
+        }
+   }
+	strjson.map(function(val,index){
+		$('.second').append(`
+			<div class="two">
+				<a href="index.php?s=/w16/Newdun/Newdun/fintwo.html&id=${val.id}">
+					<div class="left">${val.remittance_date}</div>
+					<div class="right">${val.nickname}<br/>￥${val.amount}<br />${val.status}</div>
+				</a>
+			</div>
+		`)
+	})
+</script>
+
+<script>
+	//兑换审核
+	var strjson=query_data("cashexchange","");
+
+	var strjson = jQuery.parseJSON(strjson); //必须包含 jQuery.
+	//alert(obj);
+//	for(i=0;i<strjson.length-1;i++){
+//      for(j=0;j<strjson.length-1-i;j++){
+//      	var a1 = strjson[j].remittance_date.split(' ')
+//      	var a11 = a1[0].split('-')
+//      	var a12 = a1[1].split(':')
+//      	var a111 = a11[0] + a11[1] + a11[2] + a12[0] + a12[1] + a12[2]
+//      	var a2 = strjson[j+1].remittance_date.split('-')
+//      	var a21 = a1[0].split('-')
+//      	var a22 = a1[1].split(':')
+//      	var a211 = a21[0] + a21[1] + a21[2] + a22[0] + a22[1] + a22[2]
+//          if(parseInt(a111)<parseInt(a211)){
+//              var temp=strjson[j];
+//              strjson[j]=strjson[j+1];
+//              strjson[j+1]=temp;
+//          }
+//      }
+// }
+	strjson.map(function(val,index){
+	$('.seconds').append(`
+		<div class="four">			
+			<div class="left">${val.create_time}</div>
+			<div class="right">${val.nickname}<br/>￥${val.amount}<br />${val.status}</div>			
+		</div>
+	`)
+})
+
+</script>
+
+<script>
+	//读取各个用户
+	var strjson=query_data("filluserinfoview", '1=1',"");
+	//alert(strjson);
+	var strjson = '{ "rows" : ' + strjson+ '}';
+	var obj = jQuery.parseJSON(strjson);
+	//alert(obj);
+//	for(i=0;i<obj.length-1;i++){
+//      for(j=0;j<obj.length-1-i;j++){
+//      	var a1 = obj[j].remittance_date.split(' ')
+//      	var a11 = a1[0].split('-')
+//      	var a12 = a1[1].split(':')
+//      	var a111 = a11[0] + a11[1] + a11[2] + a12[0] + a12[1] + a12[2]
+//      	var a2 = obj[j+1].remittance_date.split('-')
+//      	var a21 = a1[0].split('-')
+//      	var a22 = a1[1].split(':')
+//      	var a211 = a21[0] + a21[1] + a21[2] + a22[0] + a22[1] + a22[2]
+//          if(parseInt(a111)<parseInt(a211)){
+//              var temp=obj[j];
+//              obj[j]=obj[j+1];
+//              obj[j+1]=temp;
+//          }
+//      }
+// }
+	for(var i=0;i<obj.rows.length;i++){
+   		var nickname = eval("obj.rows["+ i +"].nickname");
+		var mobile = eval("obj.rows["+ i +"].mobile");
+		var city = eval("obj.rows["+ i +"].city");
+		var reg_time = eval("obj.rows["+ i +"].reg_time");
+		var openid = eval("obj.rows["+ i +"].openid");
+		var id = eval("obj.rows["+ i +"].uid");
+		var ustatus = eval("obj.rows["+ i +"].ustatus");
+		//console.log(id);
+		var unixTimestamp = new Date( reg_time*1000 ) ;
+		commonTime = unixTimestamp.toLocaleString();
+
+		$('.contt').append(`
+			<div class="cont">
+				<div class="first">
+					<input type="checkbox" value="${openid}" name='checkes' class="checks">
+				</div>
+				<div>${nickname}</div>
+				<div>${mobile}</div>
+				<div>${commonTime}</div>
+			</div>	
+		`);
+		$('.on').append(`
+			<div class="one">
+				<a href="index.php?s=/w16/Newdun/Newdun/finone&id=${id}">
+					<div class="left">${nickname}</div>
+					<div class="right">${city}<br/>${mobile}</div>
+				</a>
+			<div>
+		`);
+		$('.thre').append(`
+			<a href="index.php?s=/w16/Newdun/Newdun/finthree&id=${id}">
+				<div class="three">
+					<div class="left">${commonTime}</div>
+					<div class="right">${nickname}<br/>${mobile}<br />${ustatus}</div>
+				</div>
+			</a>
+		`);
+	}
+</script>
+
+<script>
+	function adds(){
+		var obj = document.getElementsByName("checkes");            
+		check_val = [];
+		var flag = false ;//标记判断是否选中一个  
+		var newd=document.getElementById('newd').value;
+		if(newd=="")
+		{
+			BootstrapDialog.show({  
+	            title: '系统提示',  
+	            message: "new盾数不能为空！"
+   			});
+		}
+		else if($(":checkbox[name=checkes]:checked").size() == 0)
+		{
+			BootstrapDialog.show({  
+	            title: '系统提示',  
+	            message: "请至少选择一位用户！"
+   			});
+		}
+		else{
+			    for(k in obj){
+			        if(obj[k].checked){
+			        	//flag = true ; 
+			        	check_val.push(obj[k].value);
+			        	var strs= new Array(); //定义一数组
+						strs=obj[k].value.split(","); //字符分割
+						//alert(strs[0]);
+						var st=strs[0];
+						var sdate=(new Date()).toLocaleDateString();
+						var dates=sdate.replace(/\//g,'.');
+						var strjson = '{"id":"","date":"'+dates+'", "openid":"'+st+'","points":"'+newd+'","remark":""}';
+						//alert(strjson);
+						rst = save_data("donate",strjson,0);
+						var reust=JSON.parse(rst);
+						var result=reust[0].result;
+						var strjson = '{ "rows" : ' + rst+ '}'; //
+						//console.log(strjson);
+						var obj = jQuery.parseJSON(strjson);
+//						alert(obj);
+						var ids = obj.rows[0].id;
+						var openids = obj.rows[0].openid;		
+						var strjson = '{"id":"'+ids+'","date":"'+dates+'", "openid":"'+st+'","points":"'+newd+'","remark":"","status":""}';
+//						alert(strjson);
+						var en=do_app("donate",strjson,0);
+//						alert(en);
+			        }
+			    }			
+				BootstrapDialog.show({  
+		            title: '系统提示',  
+		            message: "审核成功"
+		   		});	
+			}
+	}
+</script>
+</body>
+</html>
